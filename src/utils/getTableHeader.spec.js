@@ -3,8 +3,14 @@ import getTableHeader from './getTableHeader';
 
 describe('Get Table Header', () => {
   describe('getTableHeader', () => {
+    it('returns empty array when data empty', () => {
+      const data = [];
+
+      // assert
+      expect(getTableHeader(data)).to.deep.equal([]);
+    });
     it('returns attribute keys of the first element of the array', () => {
-      const date = [
+      const data = [
         {
           data: {
             Key1: 'val1',
@@ -14,7 +20,7 @@ describe('Get Table Header', () => {
       ];
 
       // assert
-      expect(getTableHeader(date)).to.deep.equal(['Key1', 'Key2']);
+      expect(getTableHeader(data)).to.deep.equal(['Key1', 'Key2']);
     });
   });
 });
