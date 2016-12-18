@@ -13,28 +13,37 @@ class DataTable extends React.Component {
   render() {
     const {entities} = this.props;
     return (
-      <table>
-        <thead>
-          <TableHeaderRow columns={getTableHeader(entities)}/>
-        </thead>
-        <tbody>
-          {this.renderRows()}
-        </tbody>
-      </table>
+      <span>
+        {this.renderTitle()}
+        <table>
+          <thead>
+            <TableHeaderRow columns={getTableHeader(entities)}/>
+          </thead>
+          <tbody>
+            {this.renderRows()}
+          </tbody>
+        </table>
+      </span>
     );
   }
   renderRows() {
-    const columnsCount = getTableHeader(this.props.entities).length;
+    const columnsCount = getTableHeader(this.props.entities).length + 1;
     return this.props.entities.map(function(row, index) {
+      const hasRowKids = Object.keys(row.kids).length > 0;
       return [
         (
-          <TableRow key="row-${index}" values={getRowValues(row.data)}/>
+          <TableRow key="row-${index}" values={getRowValues(row.data)} hasKids={hasRowKids}/>
         ),
         (
           <TableRowKids key="kids-${index}" kids={row.kids} colSpan={columnsCount} />
         )
       ];
     });
+  }
+  renderTitle() {
+    if (this.props.title) {
+      return (<h4>{this.props.title}</h4>);
+    }
   }
 
 }
