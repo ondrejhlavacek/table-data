@@ -10,7 +10,8 @@ describe('<DataTable />', () => {
   it('should be a span', () => {
     const props = {
       entities: [],
-      title: ''
+      title: '',
+      toggleNode: () => {}
     };
 
     const wrapper = shallow(<DataTable {...props} />);
@@ -24,7 +25,8 @@ describe('<DataTable />', () => {
   it('should contain title', () => {
     const props = {
       entities: [],
-      title: 'MyTitle'
+      title: 'MyTitle',
+      toggleNode: () => {}
     };
 
     const wrapper = shallow(<DataTable {...props} />);

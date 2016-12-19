@@ -8,6 +8,7 @@ export const TableDataPage = (props) => {
   return (
     <TableDataContainer
       data={props.data}
+      toggleNode={props.actions.toggleNode}
     />
   );
 };

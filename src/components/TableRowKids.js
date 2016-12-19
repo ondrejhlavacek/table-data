@@ -16,9 +16,10 @@ class TableRowKids extends React.Component {
   }
   renderKidTables() {
     const kids = this.props.kids;
+    const props = this.props;
     return Object.keys(kids).map(function (key) {
       return (
-        <DataTable key={key} entities={kids[key].records} title={key}/>
+        <DataTable key={key} entities={kids[key].records} title={key} toggleNode={props.toggleNode} />
       );
     });
   }
@@ -26,7 +27,8 @@ class TableRowKids extends React.Component {
 
 TableRowKids.propTypes = {
   kids: PropTypes.object.isRequired,
-  colSpan: PropTypes.number.isRequired
+  colSpan: PropTypes.number.isRequired,
+  toggleNode: PropTypes.func.isRequired
 };
 
 export default TableRowKids;

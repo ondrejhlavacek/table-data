@@ -6,7 +6,9 @@ import TableData from '../components/TableDataContainer';
 
 describe('<TableDataPage />', () => {
   it('should contain <TableData />', () => {
-    const actions = {};
+    const actions = {
+      toggleNode: () => {}
+    };
     const data = {};
     const wrapper = shallow(<TableDataPage actions={actions} data={data}/>);
 

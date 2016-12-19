@@ -1,2 +1,1 @@
-export const DUMMY = 'DUMMY';
-// export const CALCULATE_FUEL_SAVINGS = 'CALCULATE_FUEL_SAVINGS';
+export const TOGGLE_NODE = 'TOGGLE_NODE';

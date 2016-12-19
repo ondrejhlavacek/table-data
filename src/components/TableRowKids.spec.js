@@ -11,7 +11,8 @@ describe('<TableRowKids />', () => {
   it('should be a table row', () => {
     const props = {
       kids: {},
-      colSpan: 0
+      colSpan: 0,
+      toggleNode: () => {}
     };
 
     const wrapper = shallow(<TableRowKids {...props} />);
@@ -25,7 +26,8 @@ describe('<TableRowKids />', () => {
   it('should set colSpan', () => {
     const props = {
       kids: {},
-      colSpan: 10
+      colSpan: 10,
+      toggleNode: () => {}
     };
 
     const wrapper = shallow(<TableRowKids {...props} />);
@@ -48,7 +50,8 @@ describe('<TableRowKids />', () => {
           'records': records
         }
       },
-      colSpan: 1
+      colSpan: 1,
+      toggleNode: () => {}
     };
 
     const wrapper = shallow(<TableRowKids {...props} />);

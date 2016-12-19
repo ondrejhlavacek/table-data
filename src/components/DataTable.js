@@ -28,16 +28,31 @@ class DataTable extends React.Component {
   }
   renderRows() {
     const columnsCount = getTableHeader(this.props.entities).length + 1;
+    const props = this.props;
     return this.props.entities.map(function(row, index) {
       const hasRowKids = Object.keys(row.kids).length > 0;
-      return [
-        (
-          <TableRow key="row-${index}" values={getRowValues(row.data)} hasKids={hasRowKids}/>
-        ),
-        (
-          <TableRowKids key="kids-${index}" kids={row.kids} colSpan={columnsCount} />
-        )
-      ];
+      const isExpanded = row.expanded === true;
+      const identifierKey = Object.keys(row.data)[0];
+      const identifierValue = row.data[identifierKey];
+      const toggleNode = function() {
+        props.toggleNode(identifierKey, identifierValue);
+      };
+
+      var retVal = [];
+      retVal.push(
+        (<TableRow key="row-${index}"
+           values={getRowValues(row.data)}
+           hasKids={hasRowKids}
+           isExpanded={isExpanded}
+           toggleNode={toggleNode}
+        />)
+      );
+      if (isExpanded) {
+        retVal.push(
+          (<TableRowKids key="kids-${index}" kids={row.kids} colSpan={columnsCount} toggleNode={props.toggleNode}/>)
+        );
+      }
+      return retVal;
     });
   }
   renderTitle() {
@@ -50,7 +65,8 @@ class DataTable extends React.Component {
 
 DataTable.propTypes = {
   entities: PropTypes.array.isRequired,
-  title: PropTypes.string
+  title: PropTypes.string,
+  toggleNode: PropTypes.func.isRequired
 };
 
 export default DataTable;

@@ -6,12 +6,13 @@ class TableDataContainer extends React.Component {
     super(props, context);
   }
   render() {
-    const {data} = this.props;
-
     return (
       <div>
         <h2>Table Data</h2>
-        <DataTable entities={this.props.data.entities} />
+        <DataTable
+          entities={this.props.data.entities}
+          toggleNode={this.props.toggleNode}
+        />
       </div>
     );
   }
@@ -19,6 +20,7 @@ class TableDataContainer extends React.Component {
 
 TableDataContainer.propTypes = {
   data: PropTypes.object.isRequired,
+  toggleNode: PropTypes.func.isRequired
 };
 
 export default TableDataContainer;
