@@ -63,12 +63,15 @@ class DataTable extends React.Component {
     const {entities} = this.props;
     if (entities.length === 0) {
       return (
-        <span>Dataset empty</span>
+        <span>
+          {this.renderTitle()}
+          <p>Dataset empty</p>
+        </span>
       );
     }
     return (
       <span>
-        {this.renderTitle()}
+
         <table>
           <thead>
             <TableHeaderRow columns={getTableHeader(entities)}/>

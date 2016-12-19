@@ -8,8 +8,6 @@ const App = (props) => {
       {' | '}
       <Link to="/table-data">Table Data</Link>
       {' | '}
-      <Link to="/fuel-savings">Demo App</Link>
-      {' | '}
       <Link to="/about">About</Link>
       <br/>
       {props.children}
