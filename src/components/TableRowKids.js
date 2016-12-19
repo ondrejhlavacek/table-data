@@ -16,7 +16,7 @@ class TableRowKids extends React.Component {
   }
   render() {
     return (
-      <tr>
+      <tr className="kidRow">
         <td colSpan={this.props.colSpan}>
           {this.renderKidTables()}
         </td>

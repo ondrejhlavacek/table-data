@@ -35,8 +35,8 @@ class TableRow extends React.Component {
 
   render() {
     return (
-      <tr>
-        <td key="collapseArrow">{this.renderArrow()}</td>
+      <tr className="dataRow">
+        <td className="arrow" key="collapseArrow">{this.renderArrow()}</td>
         {this.renderColumns()}
       </tr>
     );

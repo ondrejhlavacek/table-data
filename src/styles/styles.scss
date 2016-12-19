@@ -17,8 +17,9 @@ body {
   font-weight: 300;
 }
 
-td {
-	padding: 12px;
+td, th {
+	padding: 5px;
+  margin: 0px;
 }
 
 h2 {
@@ -29,3 +30,37 @@ h2 {
 .loss { color: $vin-red; }
 input.small { width: 46px; }
 td.fuel-savings-label { width: 175px; }
+
+table {
+  border: 1px solid $vin-blue;
+  border-spacing: 0;
+}
+
+thead {
+  background-color: lighten($vin-blue, 15);
+}
+
+thead th {
+  text-align: left;
+}
+
+tr.dataRow:hover {
+  background-color: lighten($vin-blue, 30);
+}
+
+span.expand {
+  cursor: pointer;
+}
+
+.kidRow > td {
+  padding-left: 25px;
+}
+
+td.arrow {
+  width: 15px;
+}
+
+.kidRow h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
