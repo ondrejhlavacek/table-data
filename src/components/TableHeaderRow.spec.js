@@ -26,7 +26,7 @@ describe('<TableHeaderRow />', () => {
 
     const wrapper = shallow(<TableHeaderRow {...props} />);
 
-    expect(wrapper.find('th')).to.have.length(3);
+    expect(wrapper.find('th')).to.have.length(4);
     expect(wrapper.find('th').at(1).text()).to.equal('col1');
     expect(wrapper.find('th').at(2).text()).to.equal('col2');
   });

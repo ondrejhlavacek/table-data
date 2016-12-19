@@ -1,7 +1,8 @@
-import {TOGGLE_NODE} from '../constants/tableDataActionTypes';
+import {TOGGLE_NODE, REMOVE_NODE} from '../constants/tableDataActionTypes';
 import initialState from './tableDataInitialState';
 import objectAssign from 'object-assign';
 import findNestedDataNode from '../utils/findNestedDataNode';
+import removeNestedDataNode from '../utils/removeNestedDataNode';
 
 // IMPORTANT: Note that with Redux, state should NEVER be changed.
 // State is considered immutable. Instead,
@@ -19,6 +20,13 @@ export default function tableDataReducer(state = initialState.tableData, action)
       if (element !== false) {
         element.expanded = !element.expanded;
       }
+      return newState;
+    }
+
+    case REMOVE_NODE: {
+      newState = objectAssign({}, state);
+      newState.entities = removeNestedDataNode(newState.entities, action.identifierKey, action.identifierValue);
+      console.log(newState);
       return newState;
     }
 

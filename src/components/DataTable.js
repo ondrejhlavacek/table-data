@@ -21,6 +21,9 @@ class DataTable extends React.Component {
       const toggleNode = function() {
         props.toggleNode(identifierKey, identifierValue);
       };
+      const deleteNode = function() {
+        props.deleteNode(identifierKey, identifierValue);
+      };
       const rowIndex = "row-" + index;
       const kidIndex = "kid-" + index;
       let retVal = [];
@@ -30,11 +33,20 @@ class DataTable extends React.Component {
            hasKids={hasRowKids}
            isExpanded={isExpanded}
            toggleNode={toggleNode}
+           deleteNode={deleteNode}
         />)
       );
-      if (isExpanded) {
+      if (isExpanded && hasRowKids) {
         retVal.push(
-          (<TableRowKids key={kidIndex} kids={row.kids} colSpan={columnsCount} toggleNode={props.toggleNode}/>)
+          (
+            <TableRowKids
+              key={kidIndex}
+              kids={row.kids}
+              colSpan={columnsCount}
+              toggleNode={props.toggleNode}
+              deleteNode={props.deleteNode}
+            />
+          )
         );
       }
       return retVal;
@@ -49,6 +61,11 @@ class DataTable extends React.Component {
 
   render() {
     const {entities} = this.props;
+    if (entities.length === 0) {
+      return (
+        <span>Dataset empty</span>
+      );
+    }
     return (
       <span>
         {this.renderTitle()}
@@ -68,7 +85,8 @@ class DataTable extends React.Component {
 DataTable.propTypes = {
   entities: PropTypes.array.isRequired,
   title: PropTypes.string,
-  toggleNode: PropTypes.func.isRequired
+  toggleNode: PropTypes.func.isRequired,
+  deleteNode: PropTypes.func.isRequired
 };
 
 export default DataTable;

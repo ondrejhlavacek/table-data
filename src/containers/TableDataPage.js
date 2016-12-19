@@ -9,6 +9,7 @@ export const TableDataPage = (props) => {
     <TableDataContainer
       data={props.data}
       toggleNode={props.actions.toggleNode}
+      deleteNode={props.actions.deleteNode}
     />
   );
 };

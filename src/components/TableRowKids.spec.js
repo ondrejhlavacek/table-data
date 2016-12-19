@@ -12,7 +12,8 @@ describe('<TableRowKids />', () => {
     const props = {
       kids: {},
       colSpan: 0,
-      toggleNode: () => {}
+      toggleNode: () => {},
+      deleteNode: () => {}
     };
     const wrapper = shallow(<TableRowKids {...props} />);
     const actual = wrapper.type();
@@ -24,7 +25,8 @@ describe('<TableRowKids />', () => {
     const props = {
       kids: {},
       colSpan: 10,
-      toggleNode: () => {}
+      toggleNode: () => {},
+      deleteNode: () => {}
     };
     const wrapper = shallow(<TableRowKids {...props} />);
     expect(
@@ -47,7 +49,8 @@ describe('<TableRowKids />', () => {
         }
       },
       colSpan: 1,
-      toggleNode: () => {}
+      toggleNode: () => {},
+      deleteNode: () => {}
     };
     const wrapper = shallow(<TableRowKids {...props} />);
     const dataTableProps = wrapper.find('tr').first().find('td').first().find(DataTable).props();

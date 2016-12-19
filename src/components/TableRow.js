@@ -4,6 +4,7 @@ class TableRow extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.toggle = this.toggle.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   renderColumns() {
@@ -12,7 +13,7 @@ class TableRow extends React.Component {
     });
   }
 
-  renderArrow() {
+  renderExpand() {
     if (!this.props.hasKids) {
       return null;
     }
@@ -27,17 +28,28 @@ class TableRow extends React.Component {
     }
   }
 
+  renderDelete() {
+    return (
+      <span className="delete" onClick={this.delete}>✗</span>
+    );
+  }
+
   toggle() {
     if (this.props.hasKids) {
       return this.props.toggleNode();
     }
   }
 
+  delete() {
+    return this.props.deleteNode();
+  }
+
   render() {
     return (
       <tr className="dataRow">
-        <td className="arrow" key="collapseArrow">{this.renderArrow()}</td>
+        <td className="function" key="collapseArrow">{this.renderExpand()}</td>
         {this.renderColumns()}
+        <td className="function" key="delete">{this.renderDelete()}</td>
       </tr>
     );
   }
@@ -47,7 +59,9 @@ TableRow.propTypes = {
   values: PropTypes.array.isRequired,
   hasKids: PropTypes.bool.isRequired,
   isExpanded: PropTypes.bool.isRequired,
+  deleteNode: PropTypes.func.isRequired,
   toggleNode: PropTypes.func
+
 };
 
 export default TableRow;

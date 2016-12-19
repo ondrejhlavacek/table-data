@@ -16,6 +16,7 @@ class TableHeaderRow extends React.Component {
       <tr>
         <th></th>
         {this.renderColumns()}
+        <th></th>
       </tr>
     );
   }

@@ -11,7 +11,8 @@ describe('<TableRow />', () => {
       values: [],
       hasKids: false,
       isExpanded: false,
-      toggleNode: () => {}
+      toggleNode: () => {},
+      deleteNode: () => {}
     };
 
     const wrapper = shallow(<TableRow {...props} />);
@@ -27,12 +28,13 @@ describe('<TableRow />', () => {
       values: ['val1', 'val2'],
       hasKids: false,
       isExpanded: false,
-      toggleNode: () => {}
+      toggleNode: () => {},
+      deleteNode: () => {}
     };
 
     const wrapper = shallow(<TableRow {...props} />);
 
-    expect(wrapper.find('td')).to.have.length(3);
+    expect(wrapper.find('td')).to.have.length(4);
     expect(wrapper.find('td').at(1).text()).to.equal('val1');
     expect(wrapper.find('td').at(2).text()).to.equal('val2');
   });
@@ -42,12 +44,13 @@ describe('<TableRow />', () => {
       values: [],
       hasKids: true,
       isExpanded: false,
-      toggleNode: () => {}
+      toggleNode: () => {},
+      deleteNode: () => {}
     };
 
     const wrapper = shallow(<TableRow {...props} />);
 
-    expect(wrapper.find('td')).to.have.length(1);
+    expect(wrapper.find('td')).to.have.length(2);
     expect(wrapper.find('td').at(0).text()).to.equal('▶');
   });
 
@@ -56,12 +59,13 @@ describe('<TableRow />', () => {
       values: [],
       hasKids: true,
       isExpanded: true,
-      toggleNode: () => {}
+      toggleNode: () => {},
+      deleteNode: () => {}
     };
 
     const wrapper = shallow(<TableRow {...props} />);
 
-    expect(wrapper.find('td')).to.have.length(1);
+    expect(wrapper.find('td')).to.have.length(2);
     expect(wrapper.find('td').at(0).text()).to.equal('▼');
   });
 
@@ -72,11 +76,42 @@ describe('<TableRow />', () => {
       hasKids={true}
       isExpanded={false}
       toggleNode={toggleFn}
+      deleteNode={() => {}}
     />);
 
     expect(toggleFn.calledOnce).to.be.false;
     wrapper.find('span.expand').simulate('click');
     expect(toggleFn.calledOnce).to.be.true;
+  });
+
+  it('should display delete icon', () => {
+    const props = {
+      values: [],
+      hasKids: true,
+      isExpanded: true,
+      toggleNode: () => {},
+      deleteNode: () => {}
+    };
+
+    const wrapper = shallow(<TableRow {...props} />);
+
+    expect(wrapper.find('td')).to.have.length(2);
+    expect(wrapper.find('td').at(1).text()).to.equal('✗');
+  });
+
+  it('should handle delete', () => {
+    const deleteFn = sinon.spy();
+    const wrapper = shallow(<TableRow
+      values={[]}
+      hasKids={true}
+      isExpanded={false}
+      toggleNode={() => {}}
+      deleteNode={deleteFn}
+    />);
+
+    expect(deleteFn.calledOnce).to.be.false;
+    wrapper.find('span.delete').simulate('click');
+    expect(deleteFn.calledOnce).to.be.true;
   });
 
 

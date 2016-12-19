@@ -12,6 +12,7 @@ class TableDataContainer extends React.Component {
         <DataTable
           entities={this.props.data.entities}
           toggleNode={this.props.toggleNode}
+          deleteNode={this.props.deleteNode}
         />
       </div>
     );
@@ -20,7 +21,8 @@ class TableDataContainer extends React.Component {
 
 TableDataContainer.propTypes = {
   data: PropTypes.object.isRequired,
-  toggleNode: PropTypes.func.isRequired
+  toggleNode: PropTypes.func.isRequired,
+  deleteNode: PropTypes.func.isRequired
 };
 
 export default TableDataContainer;

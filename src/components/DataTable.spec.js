@@ -11,7 +11,8 @@ describe('<DataTable />', () => {
     const props = {
       entities: [],
       title: '',
-      toggleNode: () => {}
+      toggleNode: () => {},
+      deleteNode: () => {}
     };
 
     const wrapper = shallow(<DataTable {...props} />);
@@ -26,7 +27,8 @@ describe('<DataTable />', () => {
     const props = {
       entities: [],
       title: 'MyTitle',
-      toggleNode: () => {}
+      toggleNode: () => {},
+      deleteNode: () => {}
     };
 
     const wrapper = shallow(<DataTable {...props} />);
