@@ -4,6 +4,13 @@ class TableHeaderRow extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
+
+  renderColumns() {
+    return this.props.columns.map(function(columnName, index) {
+      return (<th key={index}>{columnName}</th>);
+    });
+  }
+
   render() {
     return (
       <tr>
@@ -11,11 +18,6 @@ class TableHeaderRow extends React.Component {
         {this.renderColumns()}
       </tr>
     );
-  }
-  renderColumns() {
-    return this.props.columns.map(function(columnName, index) {
-      return (<th key={index}>{columnName}</th>);
-    });
   }
 }
 

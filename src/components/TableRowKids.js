@@ -5,15 +5,6 @@ class TableRowKids extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
-  render() {
-    return (
-      <tr>
-        <td colSpan={this.props.colSpan}>
-          {this.renderKidTables()}
-        </td>
-      </tr>
-    );
-  }
   renderKidTables() {
     const kids = this.props.kids;
     const props = this.props;
@@ -22,6 +13,15 @@ class TableRowKids extends React.Component {
         <DataTable key={key} entities={kids[key].records} title={key} toggleNode={props.toggleNode} />
       );
     });
+  }
+  render() {
+    return (
+      <tr>
+        <td colSpan={this.props.colSpan}>
+          {this.renderKidTables()}
+        </td>
+      </tr>
+    );
   }
 }
 

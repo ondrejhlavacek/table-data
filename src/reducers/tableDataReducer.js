@@ -12,15 +12,18 @@ export default function tableDataReducer(state = initialState.tableData, action)
   let newState;
 
   switch (action.type) {
-    case TOGGLE_NODE:
+
+    case TOGGLE_NODE: {
       newState = objectAssign({}, state);
-      var element = findNestedDataNode(newState.entities, action.identifierKey, action.identifierValue);
+      let element = findNestedDataNode(newState.entities, action.identifierKey, action.identifierValue);
       if (element !== false) {
-        element.expanded = !!!element.expanded;
+        element.expanded = !element.expanded;
       }
       return newState;
+    }
 
-    default:
+    default: {
       return state;
+    }
   }
 }

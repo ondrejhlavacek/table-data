@@ -6,15 +6,6 @@ class TableRow extends React.Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  render() {
-    return (
-      <tr>
-        <td key='collapseArrow'>{this.renderArrow()}</td>
-        {this.renderColumns()}
-      </tr>
-    );
-  }
-
   renderColumns() {
     return this.props.values.map(function(value, index) {
       return (<td key={index}>{value}</td>);
@@ -28,16 +19,27 @@ class TableRow extends React.Component {
     if (this.props.isExpanded) {
       return (
         <span className="expand" onClick={this.toggle}>▼</span>
-      )
+      );
     } else {
       return (
         <span className="expand" onClick={this.toggle}>▶</span>
-      )
+      );
     }
   }
 
   toggle() {
-    return this.props.toggleNode();
+    if (this.props.hasKids) {
+      return this.props.toggleNode();
+    }
+  }
+
+  render() {
+    return (
+      <tr>
+        <td key="collapseArrow">{this.renderArrow()}</td>
+        {this.renderColumns()}
+      </tr>
+    );
   }
 }
 

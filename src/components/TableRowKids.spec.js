@@ -14,12 +14,9 @@ describe('<TableRowKids />', () => {
       colSpan: 0,
       toggleNode: () => {}
     };
-
     const wrapper = shallow(<TableRowKids {...props} />);
-
     const actual = wrapper.type();
     const expected = 'tr';
-
     expect(actual).to.equal(expected);
   });
 
@@ -29,7 +26,6 @@ describe('<TableRowKids />', () => {
       colSpan: 10,
       toggleNode: () => {}
     };
-
     const wrapper = shallow(<TableRowKids {...props} />);
     expect(
       wrapper.find('tr').first().find('td').prop('colSpan')
@@ -53,12 +49,9 @@ describe('<TableRowKids />', () => {
       colSpan: 1,
       toggleNode: () => {}
     };
-
     const wrapper = shallow(<TableRowKids {...props} />);
     const dataTableProps = wrapper.find('tr').first().find('td').first().find(DataTable).props();
     expect(dataTableProps.entities).to.deep.equal(records);
     expect(dataTableProps.title).to.equal('kid_a');
-  })
-
-
+  });
 });
