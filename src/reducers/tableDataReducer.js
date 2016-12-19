@@ -26,7 +26,6 @@ export default function tableDataReducer(state = initialState.tableData, action)
     case REMOVE_NODE: {
       newState = objectAssign({}, state);
       newState.entities = removeNestedDataNode(newState.entities, action.identifierKey, action.identifierValue);
-      console.log(newState);
       return newState;
     }
 
